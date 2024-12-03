@@ -1,3 +1,10 @@
+import Link from "next/link";
+import Navigation from "./components/Navigation";
+
 export default function Home() {
-  return <h1>Hello Next!</h1>;
+  return (
+    <div>
+      <h1>The wild oasis, welcome to paradise.</h1>
+    </div>
+  );
 }
