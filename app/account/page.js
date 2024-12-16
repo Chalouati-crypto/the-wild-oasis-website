@@ -1,5 +1,9 @@
 function Page() {
-  return <div>hello from account</div>;
+  return (
+    <h2 className="text-2xl font-semibold text-accent-400 mb-7">
+      Welcome, Jonas
+    </h2>
+  );
 }
 
 export default Page;
