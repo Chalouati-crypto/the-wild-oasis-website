@@ -10,7 +10,7 @@ export const metadata = {
   title: "Cabins",
 };
 // export const revalidate = 3600;
-export default function Page({ searchParams }) {
+export default async function Page({ searchParams }) {
   console.log(searchParams);
   const filter = searchParams?.capacity ?? "all";
 

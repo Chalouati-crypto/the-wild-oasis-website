@@ -1,12 +1,18 @@
 import SelectCountry from "@/app/_components/SelectCountry";
+import Spinner from "@/app/_components/Spinner";
 import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
+import { auth } from "@/app/_lib/auth";
+import { getGuest } from "@/app/_lib/data-service";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Profile.",
 };
-export default function Page() {
+export default async function Page() {
   // CHANGE
-
+  const session = await auth();
+  const guest = await getGuest(session.user.email);
+  console.log(guest);
   return (
     <div>
       <h2 className="mb-4 text-2xl font-semibold text-accent-400">
@@ -16,8 +22,13 @@ export default function Page() {
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
-      <UpdateProfileForm>
-        <SelectCountry />
+      <UpdateProfileForm guest={guest}>
+        <SelectCountry
+          name="nationality"
+          id="nationality"
+          className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
+          defaultCountry={guest.nationality}
+        />
       </UpdateProfileForm>
     </div>
   );
